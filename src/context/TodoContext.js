@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 
-const TodoContext = createContext({
+export const TodoContext = createContext({
     todoArr: [
         {
-            id: Date.now(),
+            id: 1,
             title: "todo title",
             done: false,
         },

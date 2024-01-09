@@ -1,21 +1,15 @@
-import { useTodo } from "../context/TodoContext";
-function TodoItem({ todo }) {
-    const title = todo.title;
-    const done = todo.done;
-    const { toggleDone } = useTodo();
-
-    const setTodoMsg = () => {};
+function TodoItem() {
     return (
         <div
             className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black 
-            ${done ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"}
             `}
+            // ${done ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"}
         >
             <input
                 type="checkbox"
                 className="cursor-pointer"
-                checked={done}
-                onChange={toggleDone}
+                // checked={done}
+                // onChange={() => handleToggle}
             />
             <input
                 type="text"
@@ -24,7 +18,7 @@ function TodoItem({ todo }) {
                 //         ? "border-black/10 px-2"
                 //         : "border-transparent"
                 // } ${todo.completed ? "line-through" : ""}`}
-                value={title}
+                // value={title}
                 // onChange={(e) => setTodoMsg(e.target.value)}
                 // readOnly={!isTodoEditable}
             />

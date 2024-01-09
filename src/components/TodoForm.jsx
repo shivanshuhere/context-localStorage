@@ -2,23 +2,22 @@ import { useState } from "react";
 import { useTodo } from "../context/TodoContext";
 
 function TodoForm() {
-    const [todo, setTodo] = useState("");
     const { addTodo } = useTodo();
+    const [title, setTitle] = useState("");
 
     const add = (e) => {
         e.preventDefault();
-
-        if (!todo) return;
-        addTodo({ title: todo }); //set title to the todo
-        setTodo("");
+        if (!title) return;
+        addTodo(title);
+        setTitle("");
     };
     return (
         <form className="flex" onSubmit={add}>
             <input
                 type="text"
+                value={title}
+                onChange={(e) => addTodo(e.target.value)}
                 placeholder="Write Todo..."
-                value={todo}
-                onChange={(e) => setTodo(e.target.value)}
                 className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
             />
             <button
