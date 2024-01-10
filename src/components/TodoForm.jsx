@@ -3,21 +3,23 @@ import { useTodo } from "../context/TodoContext";
 
 function TodoForm() {
     const { addTodo } = useTodo();
+
     const [title, setTitle] = useState("");
 
     const add = (e) => {
         e.preventDefault();
         if (!title) return;
-        addTodo(title);
+        addTodo({ title, id: Date.now(), done: false });
         setTitle("");
     };
+
     return (
-        <form className="flex" onSubmit={add}>
+        <form className="flex" onSubmit={(e) => add(e)}>
             <input
                 type="text"
-                value={title}
-                onChange={(e) => addTodo(e.target.value)}
                 placeholder="Write Todo..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
             />
             <button
@@ -29,5 +31,4 @@ function TodoForm() {
         </form>
     );
 }
-
 export default TodoForm;
